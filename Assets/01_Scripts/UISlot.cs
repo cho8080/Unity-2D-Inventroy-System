@@ -1,7 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Profiling.RawFrameDataView;
+using static UnityEditor.Progress;
 
 
 public class UISlot : MonoBehaviour
@@ -38,7 +43,7 @@ public class UISlot : MonoBehaviour
         item = null;
         itemImage.sprite = null;
         itemImage.enabled = false;
-   
+       
         itemText.text = "";
     }
     // 아이템 사용
@@ -47,6 +52,8 @@ public class UISlot : MonoBehaviour
         switch (itemType)
         {
             case ItemType.None:
+                // 아이템 사용
+                ItemReduction();
                 break;
             case ItemType.Equip:
                 EquipItem(); // 장비 장착
@@ -54,30 +61,37 @@ public class UISlot : MonoBehaviour
             default:
                 break;
         }
-
     }
- 
-    void EquipItem()
+    // 아이템 감소
+    public void ItemReduction()
     {
-        SlotEvent slotEvent = GetComponent<SlotEvent>();
+        // 아이템의 개수가 감소
+        item.Remove(1);
 
+        if(item.Count == 0)
+        {
+            // 아이템 사용
+            item.Use(GameManager.Instance.Character);
+            // 슬롯을 비우기
+            RemoveItem();
+        }
+    }
+   public void EquipItem()
+    {
         // 장비 장착
         if (!equipped)
         {
-            // 슬롯의 아웃라인 활성화
-            equipped = true;
-            slotEvent.outline.enabled = true;
+            // 장착 여부 변경
+            Equip(true);
 
-            item.Use(GameManager.Instance.Character);
-
-            
+            // 아이템 사용
+             item.Use(GameManager.Instance.Character);
         }
         // 장착 해제
         else
-        {   // 슬롯의 아웃라인 활성화
-            equipped = false;
-            slotEvent.outline.enabled = false;
-
+        {
+            // 장착 여부 변경
+            Equip(false);
             if (item is EquipItem equipItem)
             {
                 equipItem.UnEquip(GameManager.Instance.Character);
@@ -85,7 +99,18 @@ public class UISlot : MonoBehaviour
         }
 
         // Status에 아이템 정보 반영
-        UIStatus uIStatus = FindObjectOfType<UIStatus>();
+        UIStatus uIStatus = GameObject.FindGameObjectWithTag("UIStatus").GetComponent<UIStatus>();
         uIStatus.SetStatus();
+    }
+    // 장착 여부 변경
+    public void Equip(bool value)
+    {
+        SlotEvent slotEvent = GetComponent<SlotEvent>();
+        // 장착 여부 
+        equipped = value;
+        // 슬롯의 아웃라인 활성화 여부
+        slotEvent.outline.enabled = value;
+
+       
     }
 }

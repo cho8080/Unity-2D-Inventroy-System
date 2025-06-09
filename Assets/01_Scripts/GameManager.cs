@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     private static GameManager _instance = null;
 
-    UIMainMenu uiMainMenu;
+   UIMainMenu uiMainMenu;
    public UIInventory uiInventory;
-
    public Character Character { get; private set; }
-
+    
     public static GameManager Instance
     {
         get
@@ -21,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
-        // 중복 인스턴스가 있으면 삭제 (선택 사항)
+        // 중복 인스턴스가 있으면 삭제
         if (_instance == null)
         {
             _instance = this;
@@ -34,10 +32,10 @@ public class GameManager : MonoBehaviour
 
         SetData();
     }
-  
+  // 초기 플레이어 세팅
     void SetData()
     {
-        uiMainMenu = FindObjectOfType<UIMainMenu>();
+        uiMainMenu = GameObject.FindGameObjectWithTag("UIMainMenu").GetComponent<UIMainMenu>();
 
         Character = new Character("코딩 노예", "Chad",
         "코딩의 노예가 된지 10년짜리 되는 머습입\r\n니다. " +

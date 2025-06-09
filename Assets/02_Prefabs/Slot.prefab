@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7679102885849630059}
   - component: {fileID: 509656475296994541}
   - component: {fileID: 566830623393484718}
-  - component: {fileID: 900204991093502480}
+  - component: {fileID: 2011260763067011678}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f4a9afea1ecbc49b4ef312040f8598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
   itemType: 0
   itemImage: {fileID: 2732921388924617626}
   itemText: {fileID: 8554945401069052680}
@@ -141,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outline: {fileID: 7386196284197564405}
   doubleClickThreshold: 0.3
---- !u!114 &900204991093502480
+--- !u!114 &2011260763067011678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -413,6 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f4a9afea1ecbc49b4ef312040f8598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
   itemType: 0
   itemImage: {fileID: 2732921388924617626}
   itemText: {fileID: 8554945401069052680}
