@@ -3,12 +3,16 @@
 
 Unity 2D로 제작한 Inventroy System입니다. ScriptableObject을 사용하여 아이템 생성과 장착 및 해제 기능을 구현하였습니다.
 
+
 [ 사용 기술 요약 ] 
 
 ScriptableObject 를 사용한 아이템 데이터화
 
-<pre><code> 
+
   [ 스크립트 구조 ]
+
+
+<pre><code> 
   GameManager 
   ├── Character 
   │  └── 플레이어 정보, 장비 장착과 해제 등 관리
