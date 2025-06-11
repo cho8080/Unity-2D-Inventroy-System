@@ -15,7 +15,7 @@ public class Item  : ScriptableObject
     [SerializeField] protected string itemName;
     [SerializeField] protected ItemType type;
     [SerializeField] protected Sprite image;
-    [SerializeField] protected int inventroyIndex;
+    [SerializeField] protected int inventoryIndex;
 
     [Header("Stacking")]
     [SerializeField] protected int count;
@@ -24,13 +24,13 @@ public class Item  : ScriptableObject
     public string ItemName => itemName;
     public ItemType Type => type;
     public Sprite Image => image;
-    public int InventroyIndex => inventroyIndex;
+    public int InventoryIndex => inventoryIndex;
     public int Count => count;
     public int MaxCount => maxCount;
 
     public virtual void CreateItem(int index)
     {
-        inventroyIndex = index;
+        inventoryIndex = index;
         if (count == 0) { count = 1; }
     }
     public virtual void Add(int value)
@@ -47,7 +47,7 @@ public class Item  : ScriptableObject
     }
     public virtual void Use(Character character)
     {
-        UIInventory uIInventory = FindObjectOfType<UIInventory>();
-        uIInventory.items.Remove(this);
+        InventoryManager inventory = FindObjectOfType<InventoryManager>();
+        inventory.items.Remove(this);
     }
 }

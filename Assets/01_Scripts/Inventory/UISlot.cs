@@ -47,7 +47,7 @@ public class UISlot : MonoBehaviour
         itemText.text = "";
     }
     // 아이템 사용
-    public void Useitem()
+    public void UseItem()
     {
         switch (itemType)
         {
@@ -94,7 +94,7 @@ public class UISlot : MonoBehaviour
             Equip(false);
             if (item is EquipItem equipItem)
             {
-                equipItem.UnEquip(GameManager.Instance.Character);
+              InventoryManager.Instance.UnEquip(GameManager.Instance.Character, equipItem);
             }
         }
 
@@ -110,7 +110,5 @@ public class UISlot : MonoBehaviour
         equipped = value;
         // 슬롯의 아웃라인 활성화 여부
         slotEvent.outline.enabled = value;
-
-       
     }
 }

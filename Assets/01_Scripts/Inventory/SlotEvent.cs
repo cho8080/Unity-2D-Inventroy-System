@@ -24,14 +24,12 @@ public class SlotEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         isMouseOver = false;
-        //if (!uiSlot.equipped) {  isMouseOver = false;  }
     }
 
     void Update()
     {
         if (isMouseOver)
         {
-            //outline.enabled = true;
 
             if (Input.GetMouseButtonDown(0)) 
             {
@@ -40,18 +38,14 @@ public class SlotEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 // 더블클릭 시 
                 if (timeSinceLastClick <= doubleClickThreshold)
                 {
-              
-                    UIInventory inventory = GameObject.FindGameObjectWithTag("UIInventory").GetComponent<UIInventory>();
+
+                    InventoryManager inventory = GameObject.FindGameObjectWithTag("UIInventory").GetComponent<InventoryManager>();
                     
                     // 아이템 사용
                     inventory.UseItem(uiSlot.slotIndex);
                 }
                 lastClickTime = Time.time;
             }
-        }
-        else
-        {
-           // outline.enabled = false;
         }
     }
 }
