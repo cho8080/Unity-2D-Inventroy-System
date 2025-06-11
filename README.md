@@ -27,7 +27,10 @@ ScriptableObject 를 사용한 아이템 데이터화
   │  └── 전체 UI 관련 컨트롤 
   │
   ├── UIInventory 
-  │  └── 인벤토리 UI 구성 및 슬롯 초기화 
+  │  └── 인벤토리 UI 구성 및 슬롯 관리 
+  │
+  │── InventoryManager 
+  │  └── 인벤토리 관리
   │
   ├── UISlot 
   │  └── 인벤토리/장비 슬롯 UI 
