@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +6,14 @@ public class Character
 {
     private string alias;
     private string playerName;
-    private string introduction; // 소개글
+    private string introduction; // ?뚭컻湲
     private int level;
     private int quest;
     private int money;
     private float attackPower;
     private float defensePower;
     private float hp;
-    private float criticalHit; // 치명타
+    private float criticalHit; // 移섎챸?
 
     public string Alias { get; private set; }
     public string PlayerName { get; private set; }
@@ -31,7 +31,7 @@ public class Character
  
 
     public Character(string _alias, string _playerName, string _introduction, int _level, int _quest, int _money,
-                    float _attackPower, float _defensePower, float _hp, float _criticalHit, List<Item> _inventory)
+                    float _attackPower, float _defensePower, float _hp, float _criticalHit)
     {
         Alias = _alias;
         PlayerName = _playerName;
@@ -43,27 +43,26 @@ public class Character
         DefensePower = _defensePower;
         Hp = _hp;
         CriticalHit = _criticalHit;
-        inventory = _inventory;
     }
-    // 아이템 추가
+    // ?꾩씠??異붽?
     public void Additem(Item item)
     {
         inventory.Add(item);
     }
-    // 착용
-    public void Equip(float value01, float value02, float value03, float value04)
+    // 李⑹슜
+    public void Equip(EquipItem equipItem)
     {
-        AttackPower += value01;
-        DefensePower += value02;
-        Hp += value03;
-        CriticalHit += value04;
+        AttackPower += equipItem.AttackBonus;
+        DefensePower += equipItem.DefenseBonus;
+        Hp += equipItem.HpBonus;
+        CriticalHit += equipItem.CriticalHitBonus;
     }
-    // 벗기
-    public void UnEquip(float value01, float value02, float value03, float value04)
+    // 踰쀪린
+    public void UnEquip(EquipItem equipItem)
     {
-        AttackPower -= value01;
-        DefensePower -= value02;
-        Hp -= value03;
-        CriticalHit -= value04;
+        AttackPower -= equipItem.AttackBonus;
+        DefensePower -= equipItem.DefenseBonus;
+        Hp -= equipItem.HpBonus;
+        CriticalHit -= equipItem.CriticalHitBonus;
     }
 }

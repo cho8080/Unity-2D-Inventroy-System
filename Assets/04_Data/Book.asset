@@ -15,5 +15,6 @@ MonoBehaviour:
   itemName: "\uCC45"
   type: 0
   image: {fileID: 21300000, guid: d71d2842928573e4da0a345002f45a19, type: 3}
-  count: 0
+  inventoryIndex: 0
+  count: 1
   maxCount: 99

@@ -1,8 +1,10 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 public class UIInventory : MonoBehaviour
@@ -12,7 +14,6 @@ public class UIInventory : MonoBehaviour
     public Button closeButton;
     public GameObject uiSlotPrefab;
 
-    public List<UISlot> slots = new List<UISlot>();
     public List<Sprite> itemImages = new List<Sprite>();
     public Transform slotsParent;
 
@@ -20,29 +21,11 @@ public class UIInventory : MonoBehaviour
     void Start()
     {
         closeButton.onClick.AddListener(UIManager.Instance.OpenMainMenu);
-        InitInventoryUI();
-        GetComponent<InventoryManager>().SetInventory();
     }
-    // 슬롯 생성
-    void InitInventoryUI()
+    // UI 업데이트
+    public void UpdateSlot(Slot slot)
     {
-        for (int i = 0; i < slotCount; i++)
-        {
-            GameObject uiSlot = Instantiate(uiSlotPrefab, slotsParent);
-            slots.Add(uiSlot.GetComponent<UISlot>());
-            slots[i].slotIndex = i;
-        }
+        UISlot uiSlot = slot.gameObject.GetComponent<UISlot>();
+        uiSlot.UpdateSlot();
     }
-   
-    // 인벤토리의 슬롯 업데이트
-    public void UpdateSlot()
-    {
-        int itemsCount = GameManager.Instance.Character.inventory.Count;
-
-        for (int i = 0; i < itemsCount; i++)
-        {
-            int index = GameManager.Instance.Character.inventory[i].InventoryIndex;
-             slots[index].RefreshUI(GameManager.Instance.Character.inventory[i]);     
-        }
-    }   
 }

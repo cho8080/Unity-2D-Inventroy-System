@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Ax
   m_EditorClassIdentifier: 
   itemName: "\uB3C4\uB07C"
-  type: 1
+  type: 2
   image: {fileID: 21300000, guid: 8562c0540a3a77b458ba3ec5ed58e3dd, type: 3}
-  count: 0
+  inventoryIndex: 0
+  count: 1
   maxCount: 99
   equipType: 0
   attackBonus: 50
   defenseBonus: 0
   hpBonus: 0
   criticalHitBonus: 10
+  equipped: 0

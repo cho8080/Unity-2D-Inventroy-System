@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,14 +11,19 @@ public class UIStatus : MonoBehaviour
     public Text criticalHit;
 
     public Button closeButton;
-
-    // Start is called before the first frame update
     void Start()
     {
-        closeButton.onClick.AddListener(UIManager.Instance.OpenMainMenu);
-        SetStatus();
+        StartCoroutine(Cor());
     }
 
+    IEnumerator Cor()
+    {
+        closeButton.onClick.AddListener(UIManager.Instance.OpenMainMenu);
+
+        yield return new WaitUntil(() => GameManager.Instance != null && GameManager.Instance.Character != null);
+
+        SetStatus();
+    }
     public void SetStatus()
     {
         attackPower.text = GameManager.Instance.Character.AttackPower.ToString();

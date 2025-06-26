@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   itemName: "\uBC29\uD328"
-  type: 1
+  type: 2
   image: {fileID: 21300000, guid: 80ca1227afd3452488c7bf69322524d0, type: 3}
+  inventoryIndex: 0
   count: 1
   maxCount: 99
   equipType: 2
@@ -22,3 +23,4 @@ MonoBehaviour:
   defenseBonus: 30
   hpBonus: 10
   criticalHitBonus: 0
+  equipped: 0

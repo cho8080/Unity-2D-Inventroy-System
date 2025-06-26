@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class SlotEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    Slot slot;
     UISlot uiSlot;
     public Outline outline;
     private bool isMouseOver = false;
-    public float doubleClickThreshold = 0.3f; // 더블클릭 간주할 시간 간격
+    public float doubleClickThreshold = 0.3f; 
     private float lastClickTime = -1f;
 
     void OnEnable()
     {
+        slot = GetComponent<Slot>();
         uiSlot = GetComponent<UISlot>();
     }
     public void OnPointerEnter(PointerEventData eventData)
@@ -30,19 +32,15 @@ public class SlotEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (isMouseOver)
         {
-
             if (Input.GetMouseButtonDown(0)) 
             {
                 float timeSinceLastClick = Time.time - lastClickTime;
 
-                // 더블클릭 시 
                 if (timeSinceLastClick <= doubleClickThreshold)
                 {
-
-                    InventoryManager inventory = GameObject.FindGameObjectWithTag("UIInventory").GetComponent<InventoryManager>();
-                    
-                    // 아이템 사용
-                    inventory.UseItem(uiSlot.slotIndex);
+                    Inventory inventory = GameObject.FindGameObjectWithTag("UIInventory").GetComponent<Inventory>();
+                    slot.UseItem();
+                    uiSlot.UpdateSlot();
                 }
                 lastClickTime = Time.time;
             }

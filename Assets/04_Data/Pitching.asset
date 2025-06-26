@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Pitching
   m_EditorClassIdentifier: 
   itemName: "\uD22C\uAD6C"
-  type: 1
+  type: 2
   image: {fileID: 21300000, guid: 64296091275b45249a976ca020136546, type: 3}
+  inventoryIndex: 0
   count: 1
   maxCount: 99
   equipType: 1
@@ -22,3 +23,4 @@ MonoBehaviour:
   defenseBonus: 100
   hpBonus: 200
   criticalHitBonus: 0
+  equipped: 0

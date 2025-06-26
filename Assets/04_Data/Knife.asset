@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   itemName: "\uCE7C"
-  type: 1
+  type: 2
   image: {fileID: 21300000, guid: dfb5db31ad9665c4e93d65f7daecab8c, type: 3}
-  count: 0
+  inventoryIndex: 0
+  count: 1
   maxCount: 99
   equipType: 0
   attackBonus: 10
   defenseBonus: 10
   hpBonus: 0
   criticalHitBonus: 0
+  equipped: 0
