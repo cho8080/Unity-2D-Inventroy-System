@@ -69,7 +69,8 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            AddItem(items[i]); // 아이템 넣기                   
+            AddItem(items[i]); // 아이템 넣기
+            Debug.Log(items[i].ItemName);
         }
         for (int i = items.Count; i < slots.Count; i++)
         {
@@ -115,6 +116,14 @@ public class Inventory : MonoBehaviour
     {
         slot.Clear();
         uiInventory.UpdateSlot(slot);
+    }
+    // 인벤토리 비우기
+    public void ClearInventory()
+    {
+        for (int i =0 ; i < slots.Count; i++)
+        {
+            ClearSlot(slots[i]); // 나머지 슬롯은 비우기
+        }
     }
     // 빈 슬롯 찾기
     Slot FindEmptySlot()

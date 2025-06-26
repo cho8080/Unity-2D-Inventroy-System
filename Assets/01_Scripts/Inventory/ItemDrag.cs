@@ -53,8 +53,7 @@ public class ItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     // 드래그 끝
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (slot == null || slot.Item == null) return;
-
+        if (DragData.draggedItem == null || DragData.originSlot == null) return;
         // 드래그 원래 위치로
         dragitemImage.transform.position = startPosition;
         dragitemImage.transform.SetParent(startParent);

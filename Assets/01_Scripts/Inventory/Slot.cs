@@ -85,7 +85,7 @@ public class Slot : MonoBehaviour, IDropHandler
             Item temp = Item;
             SetItem(DragData.draggedItem);
             DragData.originSlot.item = temp;
-
+            Debug.Log("슬롯변경");
             // UI 업데이트
             uiSlot.UpdateSlot();
             DragData.originSlot.uiSlot.UpdateSlot();
